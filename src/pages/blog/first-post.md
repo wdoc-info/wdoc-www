@@ -2,6 +2,7 @@
 title: 'Welcome to the wdoc blog'
 date: '2025-12-02'
 description: 'Introducing the wdoc format and why it exists.'
+layout: ../../layouts/Layout.astro
 ---
 
 # Welcome to the wdoc blog

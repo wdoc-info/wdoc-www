@@ -1,83 +1,19 @@
 ---
-import { glob } from 'astro:content'; // if using content collections later
-import "../../styles/global.css"; // adjust path if needed
-// For now we can do something simpler: import all markdown from a folder using import.meta.glob
+import { glob } from 'astro:content'; 
+import Layout from "../../layouts/Layout.astro";
+
 const posts = Object.values(
   import.meta.glob('./*.md', { eager: true })
 );
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>wdoc - The Document Format, Reimagined</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-    </style>
-  </head>
-  <body class="font-display bg-background-light text-gray-800">
-    <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="sticky top-0 z-50 w-full bg-background-light/80 backdrop-blur-sm">
-          <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div
-              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 py-4"
-            >
-              <div class="flex items-center gap-4">
-                <div class="size-6 text-primary"><img src="/assets/logo.png" alt="logo wdoc" /></div>
-                <h2 class="text-gray-900 text-lg font-bold leading-tight tracking-[-0.015em]">
-                  WDOC
-                </h2>
-              </div>
-              <nav class="hidden md:flex items-center gap-9">
-                <a
-                  class="text-gray-600 hover:text-primary text-sm font-medium leading-normal"
-                  href="https://app.wdoc.info"
-                  >web App</a
-                >
-                <!-- <a
-                  class="text-gray-600 hover:text-primary text-sm font-medium leading-normal"
-                  href="blog/"
-                  >Blog</a
-                > -->
-              </nav>
-              <div class="flex items-center gap-4">
-                <a
-                  href="https://app.wdoc.info"
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
-                >
-                  <span class="truncate">Get Started</span>
-                </a>
-                <button class="md:hidden p-2 rounded-lg hover:bg-gray-200">
-                  <span class="material-symbols-outlined text-gray-800">menu</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </header>
-        <main class="flex flex-col items-center">
-      <h1>wdoc blog</h1>
-      <ul>
-        {posts.map((post: any) => (
-        <li>
-          <a href={post.url}>{post.frontmatter.title}</a>
-          <small>{post.frontmatter.date}</small>
-        </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+<Layout title="wdoc - The Document Format, Reimagined - blog">
+  <h1>wdoc blog</h1>
+  <ul>
+    {posts.map((post: any) => (
+    <li>
+      <a href={post.url}>{post.frontmatter.title}</a>
+      <small>{post.frontmatter.date}</small>
+    </li>
+    ))}
+  </ul>
+</Layout>
