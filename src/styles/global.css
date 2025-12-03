@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* Colors → gives you bg-primary, text-primary, bg-background-light, etc. */

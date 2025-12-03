@@ -9,7 +9,7 @@ const pageTitle = title ?? "wdoc – The Document Format, Reimagined";
 const pageDescription =
   description ??
   "Developer-friendly, interactive, and secure. The modern replacement for PDF.";
-const pageImage = image ?? "https://www.wdoc.info/assets/cover.png"; // must be absolute URL!
+const pageImage = image ? new URL(image, Astro.site).href : "https://www.wdoc.info/assets/cover.png"; // must be absolute URL!
 const pageUrl = Astro.url.href;
 ---
 
